@@ -1,0 +1,95 @@
+﻿
+<html ng-app="starter">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/www/css/style.css">
+
+    <style>
+
+  
+      .esquerda{
+        float: left;
+    width: 80%;
+      }
+      .direita{
+         float: right;
+    width: 20%;
+      } 
+    
+    .direita2{
+         float: right;
+    width: 2%;
+      }
+     .direita3{
+         float: right;
+         margin-top:108px;
+    width: 50%;
+      }
+    </style>
+   
+    </head>
+<body>
+
+    <ion-view view-title="SOS Battery">
+
+
+        <ion-content>
+
+            <ion-refresher pulling-text="Puxe para Atualizar"
+                           on-refresh="doRefresh()"
+                           refreshing-text="Atualizando ..."
+                          >
+            </ion-refresher>
+            <ion-list>
+                <ion-item  class="item-avatar item-icon-right" ng-repeat="loja in lojas" data-ng-click="click(loja)" type="item-text-wrap" href="#/tab/lojas/{{loja.id}}">
+
+
+
+                    <img   style="margin-top:40px"  ng-src="{{loja.imgURL}}">
+
+                    <div  class="esquerda" >
+
+                       
+                            <h2> <font size="3">{{loja.nome}}  </font> </h2>
+                       
+                            <br />
+                           
+                                <p> <font size="2">{{loja.end}} </font></p>
+
+
+                                <p> <font size="2"> {{loja.bairro}}  </font></p>
+                           
+                            <br />
+
+
+                            <font size="2" color="#589e3f">
+                                {{hrFunc(loja)}}
+                            </font>
+
+</div>
+                    <div class="direita">
+
+
+                        <div class="direita2" ng-if="loja.cabo">
+                            <img height="25" width="25" src="img/ic_usb_cable_icon_36dp.png" />
+                        </div>
+
+                        <div class="direita3">
+                            <font size="2" color="black">
+                                <strong>
+                                    {{dist[$index]}}
+                                </strong>
+                            </font>
+                            <img height="15" width="15" src="img/ic_directions_walk_black_24dp.png" />
+                        </div>
+                    </div>
+                        <i class="icon  icon-accessory"></i>
+
+
+</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-view>
+</body>
+    </html>

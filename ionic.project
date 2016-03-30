@@ -1,0 +1,12 @@
+{
+  "name": "SOSBattery",
+  "app_id": "0a321f35",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
