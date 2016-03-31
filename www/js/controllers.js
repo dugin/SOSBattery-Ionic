@@ -38,13 +38,8 @@ angular.module('starter.controllers', [])
     // Listen for Angular Broadcast
     $scope.$on("latLng", function (event, args) {
 
-
         latLng = args;
-
-        console.log('Broadcast Listener latLng: ' + latLng.lat + ", " + latLng.lon)
-
-
-
+   
     });
    
 
@@ -76,24 +71,38 @@ angular.module('starter.controllers', [])
 
         // Ordena por lojas mais proxima
         var lojasOrdenadas = [];
-        for (var x in lojasNoRaio)
-            lojasOrdenadas.push([x, lojasNoRaio[x]])
+        var lojasSemCabo = [];
+
+        for (var x in lojasNoRaio)       
+                lojasOrdenadas.push([x, lojasNoRaio[x]]);      
+        
+
         lojasOrdenadas.sort(function (a, b) { return a[1] - b[1] })
 
-      
         var fireBaseRef = new Firebase("https://flickering-heat-3899.firebaseio.com/estabelecimentos");
 
         for (var y in lojasOrdenadas) {
 
-          
-            $scope.dist.push(calcDist(lojasOrdenadas[y][1]) + ' min');
+
             fireBaseRef.child(lojasOrdenadas[y][0]).on("value", function (snapshot) {
 
+                var loja = snapshot.val();
 
-                lojasArray.push(snapshot.val());
+                if (loja.cabo) {
 
+                    $scope.dist.push(calcDist(lojasOrdenadas[y][1]) + ' min');
 
-                $scope.lojas.push(snapshot.val());
+                    lojasArray.push(loja);
+
+                    $scope.lojas.push(loja);
+
+                } else {
+
+                    lojasSemCabo.push([lojasOrdenadas[y][1],loja]);
+
+                }
+
+               
 
 
             }, function (errorObject) {
@@ -102,6 +111,21 @@ angular.module('starter.controllers', [])
 
 
         }
+
+        for (var x in lojasSemCabo) {
+
+            console.log(lojasSemCabo);
+
+            $scope.dist.push(calcDist(lojasSemCabo[x][0]) + ' min');
+
+            lojasArray.push(lojasSemCabo[x][1]);
+
+            $scope.lojas.push(lojasSemCabo[x][1]);
+
+        }
+
+        
+
       
         // Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
@@ -201,6 +225,7 @@ angular.module('starter.controllers', [])
        
     }); **/
 
+    
   
    
      function calcDist( distanciaM) {
@@ -361,8 +386,7 @@ angular.module('starter.controllers', [])
                     function (marker) {
 
                         marker.getPosition(function (latLng) {
-                            console.log(latLng.toString());
-
+                           
                             markerObj[latLng.toString()] = marker;
                         })
 
