@@ -23,13 +23,13 @@
       }
      .direita3{
          float: right;
-         margin-top:108px;
+         margin-top:105px;
     width: 50%;
       }
     </style>
    
     </head>
-<body>
+<body >
 
     <ion-view view-title="SOS Battery">
 
@@ -42,7 +42,8 @@
                           >
             </ion-refresher>
             <ion-list>
-                <ion-item  class="item-avatar item-icon-right" collection-repeat="loja in lojas" data-ng-click="click(loja)" type="item-text-wrap" href="#/tab/lojas/{{loja.id}}">
+                <ion-item  class="item-avatar item-icon-right item item-divider custom-item-divider" collection-repeat="loja in lojas" item-width="100%"
+    item-height="150px" data-ng-click="click(loja)" type="item-text-wrap" href="#/tab/lojas/{{loja.id}}">
 
 
 

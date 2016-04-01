@@ -1,0 +1,8 @@
+.custom-item-divider.item-divider {
+  background-color: white;
+  color: white;
+}
+.custom-item-divider.item.activated {
+  background-color: white;
+  opacity: 0.8;
+}

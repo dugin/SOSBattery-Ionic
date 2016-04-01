@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="Content-Security-Policy" content="script-src &apos;self&apos; https://cdn.firebase.com https://*.firebaseio.com https://maps.googleapis.com/ https://maps.gstatic.com/ https://mts0.googleapis.com/ &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;">
+      <meta http-equiv="Content-Security-Policy" content="script-src &apos;self&apos; http://localhost:35729 https://cdn.firebase.com https://*.firebaseio.com https://maps.googleapis.com/ https://maps.gstatic.com/ https://mts0.googleapis.com/ &apos;unsafe-inline&apos; &apos;unsafe-eval&apos;">
 
 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -12,6 +12,8 @@
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
    
+   
+      <link href="css/style.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -37,13 +39,15 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
 
-     
+      
 
      
 
-      <script src="js/essencial/angular-google-maps.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKV00aef6G4QnNPeKtypAE6w8b-rta7VQ"
+              async defer></script>
      
-    
+
+
       
   </head>
 
@@ -52,8 +56,18 @@
       The nav bar that will be updated as we navigate between views.
     -->
     <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+        <ion-nav-title>
+           SOS Battery
+        </ion-nav-title>
+
+        <ion-nav-back-button class="backBtn" onclick="backBtn()" >
+        </ion-nav-back-button>
+     
+            <ion-nav-buttons side="secondary">
+                <a class="button icon ion-funnel" onclick="$('#tabs').toggleClass('tabs-item-hide', true);$('.ion-funnel').hide();" href="#/tab/filtro"> </a>
+            </ion-nav-buttons>
+       
+
     </ion-nav-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below
@@ -61,5 +75,10 @@
       have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
+
   </body>
+
+ 
 </html>
+
+<script src="js/support.js"></script>

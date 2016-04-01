@@ -14,14 +14,16 @@ angular.module('starter.services', [])
 
     return {
 
-        latLng: function () {
-        geoLocation().then(function (position) {
+        latLng: function (dist) {
+            geoLocation().then(function (position) {
+
+                console.log("dist: "+dist)
 
 
             // Setup a GeoQuery
             query = $geo.$query({
                 center: [position.coords.latitude, position.coords.longitude],
-                radius: 20
+                radius: parseInt(dist)
             });
 
             $rootScope.$broadcast('latLng', {
@@ -55,7 +57,10 @@ angular.module('starter.services', [])
        
         geoLocation().then(function (pos) {
          
-           
+            $rootScope.$broadcast('latLngCityQuery', {
+                lat: pos.coords.latitude,
+                lon: pos.coords.longitude
+            });
 
                 var city;
 

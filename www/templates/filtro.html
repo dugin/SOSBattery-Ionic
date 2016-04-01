@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   
+</head>
+<body >
+
+
+    <ion-view view-title="Filtro" >
+        
+       
+        <ion-content class="padding">
+          
+        
+            <p><font size="4"> Distancia  </font></p>
+
+           
+
+            <p><center><font size="3" color="#589E3F" ng-if="filter.distancia < 16" > {{filter.distancia}}km  </font> </center></p>
+
+            <p><center><font size="3" color="#589E3F" ng-if="filter.distancia == 16"> Cidade  </font> </center></p>
+            
+                <div class="item range range-positive">
+                   
+                    <i class="icon ion-ios-navigate-outline"></i>
+                    <input type="range" ng-model="filter.distancia" min="1" max="16" >
+                    <i class="icon ion-ios-navigate"></i>
+                </div>
+
+            <br />
+           
+
+            <p><font size="4">Categoria  </font></p>
+
+            <ion-list>
+
+                  <ion-checkbox ng-model="filter.bar"> <i class="icon ion-beer">&nbsp;&nbsp; Bar </i></ion-checkbox>
+                <ion-checkbox ng-model="filter.loja"><i class="icon ion-ios-pricetags">&nbsp;&nbsp; Loja </i></ion-checkbox>
+                <ion-checkbox ng-model="filter.restaurante"> <i class="icon ion-android-restaurant">&nbsp;&nbsp; Restaurante </i></ion-checkbox>
+
+            </ion-list>
+
+            <br />
+           
+
+            <p><font size="4"> O Estabelecimento Disponibiliza  </font></p>
+
+            <ion-list>
+
+                <ion-checkbox  ng-model="filter.wifi" ><i class="icon ion-wifi">&nbsp;&nbsp; Wifi </i></ion-checkbox>
+                <ion-checkbox   ng-model="filter.cabo"><i class="icon ion-usb">&nbsp;&nbsp;Cabo Micro USB</i></ion-checkbox>
+             </ion-list>
+           
+            <br />
+
+            <center>
+                <button style="width:70%" class="button button-large button-positive" ng-click="setFilter(filter)">
+                    Filtrar
+                </button>
+            </center>
+           
+        </ion-content>
+    </ion-view>
+
+    
+
+</body>
+</html>
